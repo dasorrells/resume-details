@@ -52,7 +52,7 @@
     <h2>1. Data Preparation & Feature Engineering</h2>
     <ul>
         <li>
-            <span class="highlight">Data Collection & Cleaning:</span> Gathered historical service usage, purchase transactions, and loyalty plan details from Snowflake tables. Created a new dataframe with anchor dates, replaced infinite values with <code>NaN</code>, and imputed missing entries using medians (numeric) or modes (categorical).
+            <span class="highlight">Data Collection & Cleaning:</span> Gathered historical service usage, purchase transactions, and loyalty plan details from Snowflake tables. Created a new DataFrame with anchor dates, replaced infinite values with <code>NaN</code>, and imputed missing entries using medians (numeric) or modes (categorical).
         </li>
         <li>
             <span class="highlight">Feature Creation:</span> Engineered key behavioral signals, including recency of visits, time-windowed spend (3M/6M/12M), and service-delay ratios to capture churn risk indicators.
