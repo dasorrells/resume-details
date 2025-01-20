@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Automated Financial Reporting Process</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            color: #333;
+        }
+
+        h1, h2, h3 {
+            color: #444;
+        }
+
+        ul {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+
+        ul li {
+            margin-bottom: 10px;
+        }
+
+        .highlight {
+            font-weight: bold;
+            color: #0056b3;
+        }
+
+        .center {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        p.gray {
+            color: #666;
+            font-style: italic;
+            font-weight: bold;
+        }
+
+        hr {
+            border: 0;
+            border-top: 1px solid #ccc;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1 id="automated-reporting">Automated Financial Reporting Process</h1>
+
+    <p class="gray">“Automated daily system-wide sales, transactions, and DPT reporting using Python and Excel, enabling flexible segmentation and robust year-over-year comparisons.”</p>
+
+    <h2>Overview of the Report</h2>
+    <p>This report provides a comprehensive yet streamlined daily snapshot of system-wide sales (SWS), transactions, and dollars-per-transaction (DPT) by center maturity class (New, Ramping, Mature). It delivers key performance metrics side by side with their year-over-year (YOY) comparisons and organizes the data into intuitive subtotals for easy reference. The final product includes:</p>
+    <ul>
+        <li><span class="highlight">Page 1:</span> Aggregate view of system-wide sales, transactions, and DPT totals.</li>
+        <li><span class="highlight">Page 2:</span> Sales over the last four weeks, split by maturity class and state.</li>
+        <li><span class="highlight">Page 3:</span> Transactions over the last four weeks, also split by maturity class and state.</li>
+    </ul>
+
+    <h2>Key Maturity Classes</h2>
+    <ul>
+        <li><span class="highlight">New:</span> 1 to 12 months</li>
+        <li><span class="highlight">Ramping:</span> 13 to 59 months</li>
+        <li><span class="highlight">Mature:</span> 60+ months</li>
+    </ul>
+    <p>This segmentation highlights growth trajectories and allows quick identification of trends across centers with different operational tenures.</p>
+
+    <h2>High-Level Process</h2>
+
+    <h3>1. Data Cleaning and Preparation</h3>
+    <ul>
+        <li><span class="highlight">Date Conversion:</span> Convert text-based dates to proper datetime objects (e.g., CENTER_GRAND_OPENING_DATE, DATEKEY), ensuring consistent date formats.</li>
+        <li><span class="highlight">Missing Value Handling:</span> Replace or fill null or placeholder values to maintain valid numeric and date columns.</li>
+    </ul>
+
+    <h3>2. Center Matching and Maturity Calculation</h3>
+    <ul>
+        <li><span class="highlight">Merging Center Info:</span> Merge center data from multiple tables to attach crucial attributes (e.g., CENTER_ID, STATE_ABBREV, MANAGING_OWNER), replacing legacy "0000" with a valid placeholder when necessary.</li>
+        <li><span class="highlight">Months in Operation (MIO):</span> Compute how long each center has been operating by comparing CENTER_OPENING_DATE to the relevant fiscal date, returning a monthly difference.</li>
+        <li><span class="highlight">Maturity Classification:</span> Translate MIO into categories (New, Ramping, Mature) so that all subsequent reporting can easily group performance metrics by center age.</li>
+    </ul>
+
+    <h3>3. Year-over-Year (YOY) Comparison</h3>
+    <ul>
+        <li><span class="highlight">Previous Year Date:</span> For each record in the current fiscal year, calculate the corresponding date a year earlier by subtracting 364 days.</li>
+        <li><span class="highlight">Merging Prior Year Data:</span> Bring in last year’s ADJUSTED_DOLLARS_CY, TOTAL_TRANSACTIONS_D_TC, and other key metrics so that each record includes both current-year and prior-year performance for easy side-by-side comparison.</li>
+    </ul>
+
+    <h3>4. Aggregation & Output</h3>
+    <ul>
+        <li><span class="highlight">Grouping by Key Dimensions:</span> Summarize daily performance by maturity class, month, and week to facilitate both daily snapshots and broader weekly/monthly trends.</li>
+        <li><span class="highlight">Excel Export:</span> Output aggregated data to an Excel file (Interim_YYYYMMDD.xlsx), making it easy to integrate with a polished reporting shell built in Excel. The final formatted report is then automatically updated simply by pasting the new data.</li>
+    </ul>
+
+    <h2>Benefits and Impact</h2>
+    <ul>
+        <li><span class="highlight">Time Savings:</span> The automation significantly reduces manual steps, ensuring up-to-date metrics and faster turnaround.</li>
+        <li><span class="highlight">Consistency & Accuracy:</span> The code enforces standardized data cleanup and merging, minimizing the risk of human error.</li>
+        <li><span class="highlight">Actionable Insights:</span> Management can quickly assess performance trends by maturity stage, diagnosing strengths and areas for improvement across the network.</li>
+    </ul>
+
+    <div class="center">
+        <hr>
+    </div>
+
+    <h2>Bottom Line</h2>
+    <p>This automated reporting framework delivers an at-a-glance understanding of daily performance across over 1,000 centers, capturing critical YOY shifts in sales, transactions, and DPT in a consistent, user-friendly format.</p>
+
+</body>
+
+</html>
