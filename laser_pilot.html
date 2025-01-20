@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laser Pilot Guest Analytics</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            color: #333;
+        }
+
+        h1, h2, h3 {
+            color: #444;
+        }
+
+        ul {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+
+        ul li {
+            margin-bottom: 10px;
+        }
+
+        .highlight {
+            font-weight: bold;
+            color: #0056b3;
+        }
+
+        .center {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        p.gray {
+            color: #666;
+            font-style: italic;
+            font-weight: bold;
+        }
+
+        hr {
+            border: 0;
+            border-top: 1px solid #ccc;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1 id="laser-analytics">Laser Pilot Guest Analytics</h1>
+
+    <p class="gray">“Conducted comprehensive data analysis on the introduction of a new laser service to measure guest adoption, retention, and potential cannibalization of existing services, leveraging SQL and Python-based analytics workflow.”</p>
+
+    <h2>Background and Objective</h2>
+    <p>Our organization introduced a new laser service, and we needed to understand how guests behaved upon purchasing this service, whether prior spending patterns shifted, and if there was any cannibalization of our core waxing and product lines. Specifically, the analysis focused on:</p>
+    <ul>
+        <li>Identifying new vs. existing guests over various time windows (e.g., 730-day lookback).</li>
+        <li>Assessing changes in spend behavior and service mix before and after laser service purchase.</li>
+        <li>Evaluating “cannibalization,” i.e., whether guests reduced waxing or product purchases after purchase of laser.</li>
+    </ul>
+
+    <h2>Data and Methodology</h2>
+    <ul>
+        <li><span class="highlight">Data Sources:</span> Combined transactional logs for service events (wax, laser, retail, and package redemptions) stored in our dbt.prod schema, joined against dimensional tables (e.g., center info, user profiles).</li>
+        <li><span class="highlight">Filtering & Transformation:</span>
+            <ul>
+                <li>Extracted all “LP Purchase” records since launch and converted timestamps to a unified date field.</li>
+                <li>Labeled guests “No Prior Activity” vs. “With Prior Activity” based on historical transactional activity.</li>
+                <li>Calculated total spend, average spend per guest, and spend by event type (wax, product, redemption).</li>
+            </ul>
+        </li>
+        <li><span class="highlight">Cannibalization Analysis:</span>
+            <ul>
+                <li>Compared waxing and product revenue before vs. after first laser purchase to identify displacement vs. complementary spending.</li>
+                <li>Measured body-part-specific trends (e.g., comparing laser for Brazilian to waxing for Brazilian) to pinpoint potential overlap.</li>
+            </ul>
+        </li>
+    </ul>
+
+    <h2>Key Insights</h2>
+    <ul>
+        <li><span class="highlight">Guest Segmentation:</span> A notable share of first-time laser buyers showed no prior spend in the lookback window, indicating the new service drew dormant or brand-new customers.</li>
+        <li><span class="highlight">Spending Shifts:</span> While some waxing spend decreased for the same body parts where laser was purchased, overall product and waxing revenue dips were modest, pointing to partial but not complete displacement.</li>
+    </ul>
+
+    <h2>Recommendations</h2>
+    <ul>
+        <li><span class="highlight">Target Dormant Guests:</span> Prioritize marketing the laser service to lapsed customers who are reactivating.</li>
+        <li><span class="highlight">Bundle & Upsell:</span> Pair waxing and laser packages to capture additional revenue for guests who still want waxing services for certain body parts.</li>
+        <li><span class="highlight">Ongoing Monitoring:</span> Maintain a rolling 365/730-day report to proactively track whether waxing or product spend declines in correlation with laser adoption.</li>
+    </ul>
+
+    <div class="center">
+        <hr>
+    </div>
+
+    <h2>Bottom Line</h2>
+    <p>This analysis provided actionable insights into guest adoption of the new laser service, revealing minimal cannibalization of existing services while attracting new and dormant customers. The recommendations ensure continued growth by targeting the right customer segments and balancing the service mix.</p>
+
+</body>
+
+</html>
