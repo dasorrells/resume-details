@@ -1,73 +1,115 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Control Center Assignment Process</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            color: #333;
+        }
+
+        h1, h2, h3 {
+            color: #444;
+        }
+
+        ul {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+
+        ul li {
+            margin-bottom: 10px;
+        }
+
+        .highlight {
+            font-weight: bold;
+            color: #0056b3;
+        }
+
+        .center {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        p.gray {
+            color: #666;
+            font-style: italic;
+            font-weight: bold;
+        }
+
+        hr {
+            border: 0;
+            border-top: 1px solid #ccc;
+        }
+    </style>
 </head>
+
 <body>
-    <header>
-        <h1>Control Center Assignment Process</h1>
-        <p>A systematic approach for benchmarking operationally similar control centers.</p>
-    </header>
-    <nav>
-        <h2>Table of Contents</h2>
-        <ol>
-            <li><a href="#overview">Overview</a></li>
-            <li><a href="#data-preparation">Data Extraction and Preparation</a></li>
-            <li><a href="#feature-scaling">Feature Scaling and Normalization</a></li>
-            <li><a href="#clustering">Clustering Process</a></li>
-            <li><a href="#control-assignment">Control Center Assignment</a></li>
-            <li><a href="#summary">Summary and Impact</a></li>
-        </ol>
-    </nav>
-    <section id="overview">
-        <h2>Overview</h2>
-        <p>This end-to-end solution identifies operationally similar control centers for comparison against target centers. 
-           Suitability is determined through clustering based on key metrics and lifecycle stages.</p>
-    </section>
-    <section id="data-preparation">
-        <h2>Data Extraction and Preparation</h2>
-        <p>Key steps include:</p>
-        <ul>
-            <li>Extracting data using SQL queries and consolidating into a pandas DataFrame.</li>
-            <li>Aggregating metrics such as net sales and guest counts over 3M, 6M, and 12M time windows.</li>
-            <li>Calculating year-over-year (YOY) percentage variances.</li>
-            <li>Joining additional attributes (e.g., geolocation, maturity classification).</li>
-        </ul>
-    </section>
-    <section id="feature-scaling">
-        <h2>Feature Scaling and Normalization</h2>
-        <p>A dual-scaling approach is applied:</p>
-        <ul>
-            <li><strong>Heavy features:</strong> MinMaxScaler [0, 1], scaled further by 2.</li>
-            <li><strong>YOY variance features:</strong> MinMaxScaler [−1, 1].</li>
-        </ul>
-    </section>
-    <section id="clustering">
-        <h2>Clustering Process</h2>
-        <p>The elbow method determines the optimal number of clusters. Centers are grouped into:</p>
-        <ul>
-            <li>New</li>
-            <li>Ramping</li>
-            <li>Mature</li>
-        </ul>
-        <p>Centers within the same cluster and maturity class are assigned labels for comparison.</p>
-    </section>
-    <section id="control-assignment">
-        <h2>Control Center Assignment</h2>
-        <ol>
-            <li>Identify geographically nearest centers within the same maturity class.</li>
-            <li>Select additional centers from the same cluster group.</li>
-            <li>Exclude centers based on criteria (e.g., recent price changes).</li>
-        </ol>
-    </section>
-    <section id="summary">
-        <h2>Summary and Impact</h2>
-        <p>This solution streamlines performance benchmarking, ensuring accurate comparisons using advanced clustering techniques.</p>
-    </section>
-    <footer>
-        <p>&copy; [Year] [Your Name/Organization]. All rights reserved.</p>
-    </footer>
+
+    <h1 id="control-summary">Control Center Assignment Process</h1>
+
+    <p class="gray">“Developed an algorithm to systematically assign control centers to a control group using k-means clustering, geographic proximity, and other center maturity classifications.”</p>
+
+    <h2>1. Data Preparation & Feature Engineering</h2>
+    <ul>
+        <li>
+            <span class="highlight">Data Extraction:</span> Extracted data using SQL queries and consolidated it into pandas DataFrames.
+        </li>
+        <li>
+            <span class="highlight">Aggregation:</span> Calculated metrics like net sales, guest counts, and YOY variances over multiple timeframes (3M, 6M, 12M).
+        </li>
+        <li>
+            <span class="highlight">Attribute Joining:</span> Added features such as geolocation, finance opening dates, and maturity classifications.
+        </li>
+    </ul>
+
+    <h2>2. Feature Scaling & Normalization</h2>
+    <ul>
+        <li>
+            <span class="highlight">Heavy Features:</span> Scaled numeric features (e.g., total sales, guest counts) using <code>MinMaxScaler</code> mapped to [0, 1], multiplied by 2.
+        </li>
+        <li>
+            <span class="highlight">YOY Variances:</span> Normalized percentage variances with <code>MinMaxScaler</code> mapped to [−1, 1].
+        </li>
+    </ul>
+
+    <h2>3. Clustering Process</h2>
+    <ul>
+        <li>
+            <span class="highlight">Cluster Determination:</span> Used the elbow method to identify optimal clusters within maturity classes.
+        </li>
+        <li>
+            <span class="highlight">Label Assignment:</span> Grouped centers into clusters based on operational similarities.
+        </li>
+    </ul>
+
+    <h2>4. Control Center Assignment</h2>
+    <ul>
+        <li>
+            <span class="highlight">Geographic Filtering:</span> Selected nearest centers within the same maturity class.
+        </li>
+        <li>
+            <span class="highlight">Cluster-Based Selection:</span> Identified additional centers with matching cluster labels.
+        </li>
+        <li>
+            <span class="highlight">Exclusion Criteria:</span> Removed centers with significant price changes or unique promotions.
+        </li>
+    </ul>
+
+    <div class="center">
+        <hr>
+    </div>
+
+    <h2>Bottom Line</h2>
+    <p>
+        This solution streamlines performance benchmarking by leveraging advanced clustering techniques and ensuring robust comparisons across lifecycle stages, geographic proximity, and YOY trends.
+    </p>
+
 </body>
+
 </html>
