@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Churn Prevention Framework</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            color: #333;
+        }
+
+        h1, h2, h3 {
+            color: #444;
+        }
+
+        ul {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+
+        ul li {
+            margin-bottom: 10px;
+        }
+
+        .highlight {
+            font-weight: bold;
+            color: #0056b3;
+        }
+
+        .center {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        hr {
+            border: 0;
+            border-top: 1px solid #ccc;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Churn Prevention Framework</h1>
+
+    <h2>1. Data Preparation & Feature Engineering</h2>
+    <ul>
+        <li>
+            <span class="highlight">Data Collection & Cleaning:</span> Gathered historical service usage, purchase transactions, and loyalty plan details from Snowflake tables. Created a new dataframe with anchor dates, replaced infinite values with <code>NaN</code>, and imputed missing entries using medians (numeric) or modes (categorical).
+        </li>
+        <li>
+            <span class="highlight">Feature Creation:</span> Engineered key behavioral signals, including recency of visits, time-windowed spend (3M/6M/12M), and service-delay ratios to capture churn risk indicators.
+        </li>
+        <li>
+            <span class="highlight">Scaling & Transformation:</span> Applied custom feature weighting and normalized inputs for machine learning using <code>MinMaxScaler</code>.
+        </li>
+    </ul>
+
+    <h2>2. Model Training & Scoring</h2>
+    <ul>
+        <li>
+            <span class="highlight">Train/Validation/Test Split:</span> Stratified splits preserved a natural churn rate across datasets.
+        </li>
+        <li>
+            <span class="highlight">Algorithm Selection & Optimization:</span> Evaluated and tuned ML frameworks like Random Forest and Gradient Boosting to optimize recall for the minority churn class.
+        </li>
+        <li>
+            <span class="highlight">Scoring Pipeline:</span> Automated workflows processed data, applied transformations, and output churn risk scores, capturing ~80% of non-returning customers within 90 days.
+        </li>
+    </ul>
+
+    <h2>3. Behavioral Segmentation & Targeting</h2>
+    <ul>
+        <li>
+            <span class="highlight">Clustering:</span> Used K-Means with elbow and silhouette methods to segment high-risk customers based on behavior patterns.
+        </li>
+        <li>
+            <span class="highlight">Segment-Specific Campaigns:</span> Developed tailored marketing strategies for each segment to maximize engagement.
+        </li>
+        <li>
+            <span class="highlight">Control Groups:</span> Held out 10% of customers in each cluster to measure the effectiveness of targeted interventions.
+        </li>
+    </ul>
+
+    <h2>4. Measurement & Business Impact</h2>
+    <ul>
+        <li>
+            <span class="highlight">A/B Testing & Statistical Significance:</span> Compared test vs. control performance to validate promotional strategies.
+        </li>
+        <li>
+            <span class="highlight">Iterative Feedback Loop:</span> Insights from outcomes informed model updates, feature refinements, and new hypotheses.
+        </li>
+        <li>
+            <span class="highlight">ROI & Retention Gains:</span> Reduced churn increased customer lifetime value and optimized marketing resources.
+        </li>
+    </ul>
+
+    <div class="center">
+        <hr>
+    </div>
+
+    <h2>Bottom Line</h2>
+    <p>
+        By leveraging data engineering, robust modeling, strategic clustering, and controlled experimentation, this framework provides actionable insights for targeted campaigns and measurable improvements in retention, ultimately driving material EBITDA growth.
+    </p>
+</body>
+
+</html>
