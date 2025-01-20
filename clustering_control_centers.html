@@ -1,105 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Code & Process Summary</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            margin: 20px;
-            color: #333;
-        }
-
-        h1, h2, h3 {
-            color: #444;
-        }
-
-        ul {
-            margin: 10px 0;
-            padding-left: 20px;
-        }
-
-        ul li {
-            margin-bottom: 10px;
-        }
-
-        .highlight {
-            font-weight: bold;
-            color: #0056b3;
-        }
-
-        .center {
-            text-align: center;
-            margin: 20px 0;
-        }
-
-        hr {
-            border: 0;
-            border-top: 1px solid #ccc;
-        }
-
-        .indented {
-            margin-left: 20px;
-        }
-    </style>
+    <title>Control Center Assignment Process</title>
 </head>
-
 <body>
-    <h1>CODE & PROCESS SUMMARY</h1>
-    <p style="color: #666; font-style: italic; font-weight: bold;">“Developed an algorithm to systematically assign control centers to a control group using k-means clustering, geographic proximity, and other center maturity classifications.”</p>
-    <p>
-        This end-to-end solution addresses the challenge of identifying suitable control centers for comparing against "target" or "test" centers. Suitability in this context is determined by capturing operational similarities across multiple dimensions.
-    </p>
-
-    <p>
-        The process begins with extracting data via SQL queries and consolidating it into a pandas DataFrame. Key metrics, such as net sales by category and guest counts, are aggregated over several time windows (e.g., 3M, 6M, and 12M) for both the current year (TY) and the prior year (LY). A custom function calculates percentage variances between TY and LY figures, providing standardized measures of each center’s year-over-year performance across various metrics.
-    </p>
-
-    <p>
-        Additional attributes, such as finance opening dates, geolocation (latitude/longitude), and demographic and operational features, are joined to the dataset. Centers are classified into New, Ramping, or Mature categories based on the number of days since opening. This maturity grouping facilitates better handling of natural variability among centers at different lifecycle stages in the subsequent scaling and clustering steps.
-    </p>
-
-    <h2>Preparation for Clustering</h2>
-    <p>
-        To prepare for clustering, the code applies a dual-scaling approach to normalize key features:
-    </p>
-    <ul>
-        <li>
-            <span class="highlight">"Heavy" numeric features:</span> Transformed using a MinMaxScaler mapped to the range [0, 1] and scaled further by a factor of 2.
-        </li>
-        <li>
-            <span class="highlight">YOY percentage variance features:</span> Scaled using a MinMaxScaler mapped to the range [−1, 1].
-        </li>
-    </ul>
-
-    <p>
-        This approach balances the influence of absolute performance metrics with relative performance changes in terms of YOY trendlines.
-    </p>
-
-    <h2>Clustering & Control Center Selection</h2>
-    <p>
-        Using the elbow method within each maturity class, the code determines the optimal number of clusters. Centers are then assigned cluster labels. For selecting control centers for a given target center, the pipeline performs the following:
-    </p>
-    <ol>
-        <li>Identifies geographically nearest centers within the same maturity class (e.g., the 5 closest "Mature" centers).</li>
-        <li>Selects additional centers from the same maturity class and cluster group (e.g., 20 centers with the same K-Means cluster label).</li>
-    </ol>
-
-    <p>
-        Centers are excluded if they meet certain exclusion criteria (e.g., recent significant price changes or unique promotional events). Finally, the pipeline summarizes a comparison of the target center’s performance metrics (e.g., sales by category, guest counts, churn rates) against the selected control centers.
-    </p>
-
-    <div class="center">
-        <hr>
-    </div>
-
-    <h2>Bottom Line</h2>
-    <p>
-        This solution streamlines the process of identifying and clustering operationally similar control centers for robust performance comparisons. By leveraging advanced data preparation, dual-scaling, and clustering techniques, it ensures accurate benchmarking across centers while accounting for lifecycle stages, geographic proximity, and year-over-year trends.
-    </p>
+    <header>
+        <h1>Control Center Assignment Process</h1>
+        <p>A systematic approach for benchmarking operationally similar control centers.</p>
+    </header>
+    <nav>
+        <h2>Table of Contents</h2>
+        <ol>
+            <li><a href="#overview">Overview</a></li>
+            <li><a href="#data-preparation">Data Extraction and Preparation</a></li>
+            <li><a href="#feature-scaling">Feature Scaling and Normalization</a></li>
+            <li><a href="#clustering">Clustering Process</a></li>
+            <li><a href="#control-assignment">Control Center Assignment</a></li>
+            <li><a href="#summary">Summary and Impact</a></li>
+        </ol>
+    </nav>
+    <section id="overview">
+        <h2>Overview</h2>
+        <p>This end-to-end solution identifies operationally similar control centers for comparison against target centers. 
+           Suitability is determined through clustering based on key metrics and lifecycle stages.</p>
+    </section>
+    <section id="data-preparation">
+        <h2>Data Extraction and Preparation</h2>
+        <p>Key steps include:</p>
+        <ul>
+            <li>Extracting data using SQL queries and consolidating into a pandas DataFrame.</li>
+            <li>Aggregating metrics such as net sales and guest counts over 3M, 6M, and 12M time windows.</li>
+            <li>Calculating year-over-year (YOY) percentage variances.</li>
+            <li>Joining additional attributes (e.g., geolocation, maturity classification).</li>
+        </ul>
+    </section>
+    <section id="feature-scaling">
+        <h2>Feature Scaling and Normalization</h2>
+        <p>A dual-scaling approach is applied:</p>
+        <ul>
+            <li><strong>Heavy features:</strong> MinMaxScaler [0, 1], scaled further by 2.</li>
+            <li><strong>YOY variance features:</strong> MinMaxScaler [−1, 1].</li>
+        </ul>
+    </section>
+    <section id="clustering">
+        <h2>Clustering Process</h2>
+        <p>The elbow method determines the optimal number of clusters. Centers are grouped into:</p>
+        <ul>
+            <li>New</li>
+            <li>Ramping</li>
+            <li>Mature</li>
+        </ul>
+        <p>Centers within the same cluster and maturity class are assigned labels for comparison.</p>
+    </section>
+    <section id="control-assignment">
+        <h2>Control Center Assignment</h2>
+        <ol>
+            <li>Identify geographically nearest centers within the same maturity class.</li>
+            <li>Select additional centers from the same cluster group.</li>
+            <li>Exclude centers based on criteria (e.g., recent price changes).</li>
+        </ol>
+    </section>
+    <section id="summary">
+        <h2>Summary and Impact</h2>
+        <p>This solution streamlines performance benchmarking, ensuring accurate comparisons using advanced clustering techniques.</p>
+    </section>
+    <footer>
+        <p>&copy; [Year] [Your Name/Organization]. All rights reserved.</p>
+    </footer>
 </body>
-
 </html>
