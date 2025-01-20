@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Visualization Map & Tool</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            color: #333;
+        }
+
+        h1, h2, h3 {
+            color: #444;
+        }
+
+        ul {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+
+        ul li {
+            margin-bottom: 10px;
+        }
+
+        .highlight {
+            font-weight: bold;
+            color: #0056b3;
+        }
+
+        .center {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        p.gray {
+            color: #666;
+            font-style: italic;
+            font-weight: bold;
+        }
+
+        hr {
+            border: 0;
+            border-top: 1px solid #ccc;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1 id="data-visualization">Data Visualization Map & Tool</h1>
+
+    <p class="gray">“Built an interactive Python-based data visualization map & tool (Pandas, Folium) for YOY performance, pricing analysis, and key KPIs across 1,000+ centers.”</p>
+
+    <h2>1. Data Preparation</h2>
+    <ul>
+        <li><span class="highlight">Data Cleansing:</span> Cleans missing values and addresses mixed data types. Identifies and drops rows without valid geographical coordinates. Columns are converted to the most relevant data type.</li>
+        <li><span class="highlight">Date Processing:</span> Each center’s Grand Opening Date is converted into a datetime format, and an Opening Year feature is extracted to categorize centers by launch year and maturity.</li>
+        <li><span class="highlight">Categorization:</span> A custom logic assigns marker colors based on maturity (New, Upcoming), opening year (2022, 2023), and performance (Top or Bottom based on various ranking criteria). This color-coding makes it easy to spot trends geographically at a glance.</li>
+    </ul>
+
+    <h2>2. Interactive Map Creation</h2>
+    <ul>
+        <li><span class="highlight">Centered Display:</span> The map auto-centers using the mean latitude and longitude of all centers, ensuring an optimal default view depending on unique parameters.</li>
+        <li><span class="highlight">Dynamic Popups:</span> Each marker on the map includes a popup that highlights key performance indicators—such as YTD Sales (SWS), YOY changes in sales/transactions, and new guest counts—in an easy-to-digest format.</li>
+        <li><span class="highlight">Visual Cues:</span> Colors help identify top vs. bottom performers, newly opened vs. established centers, and upcoming locations, accelerating insight into geographical performance.</li>
+    </ul>
+
+    <h2>3. Business Impact, Use Cases, and Ongoing Iteration</h2>
+    <ul>
+        <li><span class="highlight">Strategic Expansion & FBC Focus:</span> This map provides an objective POV on density and average volume metrics in an interactive format, materially contributing to decisions during center count expansion. It also provides Franchise Business Consultants (FBCs) with area maps to quickly identify regions and centers most in need of support, informing coaching priorities and resource allocation for training.</li>
+        <li><span class="highlight">Pricing Strategy:</span> The map supports franchisee owners in understanding relative pricing compared to other EWC-branded centers.</li>
+        <li><span class="highlight">Marketing and Collaboration:</span> The shareable HTML map fosters data-driven discussions across all areas of our business.</li>
+        <li><span class="highlight">Ongoing Enhancements:</span> Iterations might soon include time-series filters, predictive modeling, and advanced pricing analytics to deepen insights and improve interactivity.</li>
+    </ul>
+
+    <div class="center">
+        <hr>
+    </div>
+
+    <h2>Bottom Line</h2>
+    <p>This interactive dashboard merges essential KPIs, location intelligence, and an intuitive interface to deliver actionable insights—empowering teams to make faster, smarter decisions for both immediate performance improvements and long-term growth.</p>
+
+</body>
+
+</html>
