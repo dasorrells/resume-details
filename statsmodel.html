@@ -84,21 +84,25 @@
     <h2>Statistical Significance and Sample Size Analysis</h2>
     <ul>
         <li>
-            With established baselines for sales and YOY variance, I used the Python <code>statsmodels</code> library—specifically <code>TTestIndPower</code>—to estimate the sample sizes required to detect statistically significant changes at desired power (e.g., 80–90%) and alpha levels (e.g., 0.01 or 0.05).
-        </li>
-        <li>
-            The calculations incorporated realistic effect sizes by using a fraction of the observed standard deviation (e.g., 10–20%) as the anticipated shift.
-        </li>
-        <li>
-            Scenarios with ratio-based group sizes were also assessed, ensuring flexibility if the test group size differs from the control group.
-        </li>
-    </ul>
+            With established baselines for sales and YOY variance, I used the Python <code>statsmodels</code> library for in-depth statistical analysis, including:
+        <ul>
+            <li>
+                <code>TTestIndPower</code>: This module was leveraged to calculate the power of statistical tests, estimate required sample sizes, and assess the sensitivity of detecting meaningful differences between control and test groups.
+            </li>
+            <li>
+                Experimental Design: Utilizing functions to determine optimal sample sizes for various alpha levels (e.g., 0.01 or 0.05) and power thresholds (e.g., 80% or 90%), ensuring rigorous validation of experimental outcomes.
+            </li>
+            <li>
+                Effect Size Calculations: Incorporated realistic effect sizes as fractions of observed standard deviations, such as 10-20%, to reflect meaningful operational shifts.
+            </li>
+        </ul>
 
     <h2>Practical Implications</h2>
     <p>
         Translating the required sample sizes into tangible weekly or monthly goals helped guide operational planning. For example, if each center contributes a certain volume of weekly data, I estimated the duration (in weeks) needed to reach the required sample size, helping stakeholders plan the test rollout.
     </p>
 
+    <h2>Bottom Line</h2>
     <p>
         By merging baseline metrics and YOY variance measures, this analysis provides a robust framework for ongoing performance tracking and experiment design. With clear baselines for means and standard deviations, decision-makers can quickly assess how new initiatives or market changes stack up against established norms, and do so with confidence that results are backed by statistically sound principles.
     </p>
