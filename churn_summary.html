@@ -82,6 +82,22 @@
             <span class="highlight">Algorithm Selection & Optimization:</span> Evaluated and tuned ML frameworks like Random Forest and Gradient Boosting to optimize recall for the minority churn class.
         </li>
         <li>
+            <span class="highlight">Deep Learning Approach:</span> Ultimately, we developed a neural network model with sequential layers:
+            <ul>
+                <li>First hidden layer: 128 neurons, ReLU activation, input shape (103,)</li>
+                <li>Dropout layer: 25% neuron dropout for regularization</li>
+                <li>Second hidden layer: 64 neurons, ReLU activation</li>
+                <li>Dropout layer: 10% neuron dropout</li>
+                <li>Third hidden layer: 16 neurons, ReLU activation</li>
+                <li>Output layer: 1 neuron, Sigmoid activation (churn probability)</li>
+            </ul>
+            After multiple iterations optimizing hyperparameters, we used ROC analysis to select the optimal threshold:
+            <ul>
+                <li>Calculated ROC curve and G-mean to determine best threshold</li>
+                <li>Final model captured high-risk customers with strong predictive performance</li>
+            </ul>
+        </li>
+        <li>
             <span class="highlight">Scoring Pipeline:</span> Automated workflows processed data, applied transformations, and output churn risk scores, capturing ~90% of non-returning customers within 90 days.
         </li>
     </ul>
