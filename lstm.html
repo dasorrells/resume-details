@@ -69,36 +69,41 @@
 
   <h2>1. Goal</h2>
   <p>
-    To build a replicable modeling pipeline that connects multi-channel media spend to downstream acquisition, leveraging temporal modeling and interpretability techniques to inform future marketing strategy.
+    To develop a comprehensive analytics solution that links multi-channel marketing investments to guest acquisition outcomes, providing a foundation for forecasting, attribution, and strategic budget optimization across various time horizons.
   </p>
 
   <h2>2. Architecture & Inputs</h2>
   <ul>
-    <li>Aggregated 12+ marketing channels into a daily panel structure</li>
-    <li>Engineered lagged features (e.g., trailing 3-day spend), 7-day trends, day-of-week one-hot encodings, and holiday indicators</li>
-    <li>Used guest count (USER_ID) as the primary forecasting target</li>
+    <li>Transformed daily campaign-level spend across 12+ media channels into a structured time series panel</li>
+    <li>Engineered supporting features including day-of-week indicators, holiday proximity, trailing spend trends, and prior year volumes</li>
+    <li>Enabled both short- and longer-horizon forecasts to support near-term planning and long-term channel impact evaluation</li>
   </ul>
 
-  <h2>3. Forecasting Models</h2>
+  <h2>3. Forecasting & Attribution Models</h2>
   <ul>
-    <li><span class="highlight">LSTM Neural Network:</span> Multi-step time series forecasting with 2-day input and 2-day horizon, trained in TensorFlow with dropout and early stopping</li>
-    <li><span class="highlight">XGBoost Regression:</span> Used for benchmarking and interpretability; evaluated via MAE, RMSE, R², and MAPE across train/test sets</li>
+    <li><span class="highlight">LSTM Neural Network:</span> Designed for sequential modeling across configurable lookback and forecast windows, capturing nonlinear temporal dependencies in acquisition behavior</li>
+    <li><span class="highlight">XGBoost Regression:</span> Deployed in parallel to provide fast, accurate predictions and explainable attribution signals using tabular inputs</li>
   </ul>
 
-  <h2>4. Model Explainability</h2>
+  <h2>4. Explainability & Evaluation</h2>
   <p>
-    SHAP (SHapley Additive exPlanations) was applied to the trained XGBoost model to extract global and local feature importance:
+    To make the models actionable, SHAP was used to quantify feature importance at both global and local levels:
   </p>
   <ul>
-    <li>Global: SHAP summary plots visualized which features consistently influenced guest acquisition</li>
-    <li>Local: Force plots helped diagnose how specific campaigns or conditions influenced single-day performance</li>
-    <li>Naive 95% confidence intervals were generated to contextualize forecast reliability</li>
+    <li>SHAP summary plots highlight the most influential spend channels and temporal indicators</li>
+    <li>Local explanations enable diagnosis of performance drivers on specific days or weeks</li>
+    <li>Evaluation metrics include MAE, RMSE, R², and naive confidence intervals to assess prediction accuracy and trustworthiness</li>
   </ul>
 
-  <h2>5. Strategic Use Cases</h2>
+  <h2>5. Strategic Applications</h2>
   <p>
-    The framework is reusable for regional or campaign-level segmentation, with tunable lookback/horizon windows. It supports proactive media mix optimization and hypothesis testing for high-performing acquisition channels.
+    This framework powers testing and optimization of marketing strategy through:
   </p>
+  <ul>
+    <li>Spend shift experiments across platforms (e.g., TikTok vs. Google vs. Meta)</li>
+    <li>Time-based forecasting for campaign pacing and seasonality planning</li>
+    <li>Budget allocation refinement based on expected guest lift or ROI projections</li>
+  </ul>
 
   <div class="center">
     <hr />
@@ -106,7 +111,7 @@
 
   <h2>Bottom Line</h2>
   <p>
-    This hybrid attribution framework provides both predictive accuracy and interpretability. It bridges marketing execution with analytics by quantifying impact, improving budget allocation, and surfacing key drivers behind acquisition performance.
+    The attribution system is designed for flexibility and repeatability—supporting a variety of test structures and time windows while preserving model interpretability and actionability. Built entirely in Python, it empowers data-driven marketing with real-world forecasting, channel optimization, and tactical planning tools.
   </p>
 </body>
 
