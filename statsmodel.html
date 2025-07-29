@@ -2,125 +2,102 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Code & Process Summary</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Statistical Test Framework</title>
 
-    <!-- Google Analytics Tag -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-2XDS0NXE42"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+  <!-- Google Analytics Tag -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-2XDS0NXE42"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
+    gtag("config", "G-2XDS0NXE42");
+  </script>
 
-      gtag('config', 'G-2XDS0NXE42');
-    </script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      margin: 20px;
+      color: #333;
+    }
 
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            margin: 20px;
-            color: #333;
-        }
+    h1,
+    h2,
+    h3 {
+      color: #444;
+    }
 
-        h1, h2, h3 {
-            color: #444;
-        }
+    ul {
+      margin: 10px 0;
+      padding-left: 20px;
+    }
 
-        ul {
-            margin: 10px 0;
-            padding-left: 20px;
-        }
+    ul li {
+      margin-bottom: 10px;
+    }
 
-        ul li {
-            margin-bottom: 10px;
-        }
+    .highlight {
+      font-weight: bold;
+      color: #0056b3;
+    }
 
-        ol {
-            margin: 10px 0;
-            padding-left: 20px;
-        }
+    .center {
+      text-align: center;
+      margin: 20px 0;
+    }
 
-        ol li {
-            margin-bottom: 10px;
-        }
+    p.gray {
+      color: #666;
+      font-style: italic;
+      font-weight: bold;
+    }
 
-        .highlight {
-            font-weight: bold;
-            color: #0056b3;
-        }
-
-        .center {
-            text-align: center;
-            margin: 20px 0;
-        }
-
-        hr {
-            border: 0;
-            border-top: 1px solid #ccc;
-        }
-
-        .indented {
-            margin-left: 20px;
-        }
-
-        .gray-quote {
-            color: #666;
-            font-style: italic;
-            font-weight: bold;
-        }
-    </style>
+    hr {
+      border: 0;
+      border-top: 1px solid #ccc;
+    }
+  </style>
 </head>
 
 <body>
-    <h1>Statistical Significance</h1>
-    <p class="gray-quote">“Leveraged statsmodels for advanced significance testing, sample size calculations, and experimental design.”</p>
+  <h1 id="stat-framework-summary">Statistical Test Framework</h1>
 
-    <p>
-        In this project, I conducted a comprehensive analysis to determine statistically significant changes in center-level sales performance while also establishing meaningful baselines for future tracking. The dataset contained weekly transactions for over 1000 centers, focusing on both package and service sales. Here is the step-by-step approach:
-    </p>
+  <p class="gray">
+    “Designed and implemented a statistical framework combining power analysis, clustering, and Difference-in-Differences to accelerate test readouts, reduce variance, and detect practical effects across hundreds of centers.”
+  </p>
 
-    <h2>Data Aggregation and Preparation</h2>
-    <ul>
-        <li>Sales data was initially split by EVENT_TYPE—namely Sales Wax Pass (package) versus Sales Service (service)—and then aggregated by CENTER_ID and YEAR_WEEK.</li>
-        <li>The resulting <code>weekly_metrics</code> DataFrame contained total weekly sales figures for package and service sales for each center.</li>
-    </ul>
+  <h2>1. Measurement Design</h2>
+  <p>
+    Power analysis is used prior to experimentation to estimate the minimum number of 28-day periods needed to detect a given lift in return rate with high statistical confidence. Assumptions include expected standard deviation, target lift size, and control/test group ratios.
+  </p>
 
-    <h2>Baseline Metrics for the Past 26 Weeks</h2>
-    <p>
-        To understand current performance benchmarks, I isolated data from the most recent 26 weeks. For each center, I computed the average and standard deviation of package and service sales during this period (<code>Avg_Package_Sales</code>, <code>StdDev_Package_Sales</code>, and similarly for service sales). These metrics serve as baselines to evaluate ongoing and future performance changes.
-    </p>
+  <h2>2. Clustering and Matching</h2>
+  <p>
+    Centers are grouped using k-means clustering based on historical KPIs, geographic proximity, and maturity. This reduces within-group variance and improves match quality for test/control assignments.
+  </p>
 
-    <h2>Statistical Significance and Sample Size Analysis</h2>
-    <ul>
-        <li>
-            With established baselines for sales and YOY variance, I used the Python <code>statsmodels</code> library for in-depth statistical analysis, including:
-        <ul>
-            <li>
-                <code>TTestIndPower</code>: This module was leveraged to calculate the power of statistical tests, estimate required sample sizes, and assess the sensitivity of detecting meaningful differences between control and test groups.
-            </li>
-            <li>
-                Experimental Design: Utilizing functions to determine optimal sample sizes for various alpha levels (e.g., 0.01 or 0.05) and power thresholds (e.g., 80% or 90%), ensuring rigorous validation of experimental outcomes.
-            </li>
-            <li>
-                Effect Size Calculations: Incorporated realistic effect sizes as fractions of observed standard deviations, such as 10-20%, to reflect meaningful operational shifts.
-            </li>
-        </ul>
+  <h2>3. Pre/Post Analysis with Difference-in-Differences</h2>
+  <p>
+    Metrics are averaged across pre- and post-periods (e.g., 6 months before and after launch). Difference-in-Differences estimation isolates causal effects by comparing changes in test groups vs matched controls.
+  </p>
 
-    <h2>Practical Implications</h2>
-    <p>
-        Translating the required sample sizes into tangible weekly or monthly goals helped guide operational planning. For example, if each center contributes a certain volume of weekly data, I estimated the duration (in weeks) needed to reach the required sample size, helping stakeholders plan the test rollout.
-    </p>
+  <h2>4. Statistical Significance and Effect Size</h2>
+  <p>
+    Statistical rigor is ensured using p-values, 95% confidence intervals, and effect size calculations (Cohen’s d) to validate both the presence and magnitude of change.
+  </p>
 
-    <h2>Bottom Line</h2>
-    <p>
-        By merging baseline metrics and YOY variance measures, this analysis provides a robust framework for ongoing performance tracking and experiment design. With clear baselines for means and standard deviations, decision-makers can quickly assess how new initiatives or market changes stack up against established norms, and do so with confidence that results are backed by statistically sound principles.
-    </p>
+  <div class="center">
+    <hr />
+  </div>
 
-    <div class="center">
-        <hr>
-    </div>
+  <h2>Bottom Line</h2>
+  <p>
+    This process creates a defensible measurement strategy grounded in power analysis, clean experimental design, and rapid statistical readouts—supporting fast iteration and confident decision-making at scale.
+  </p>
 </body>
 
 </html>
