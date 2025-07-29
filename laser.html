@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Laser Service Adoption Analytics Framework</title>
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-2XDS0NXE42"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
+    gtag("config", "G-2XDS0NXE42");
+  </script>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      margin: 20px;
+      color: #333;
+    }
+
+    h1, h2, h3 {
+      color: #444;
+    }
+
+    ul {
+      margin: 10px 0;
+      padding-left: 20px;
+    }
+
+    ul li {
+      margin-bottom: 10px;
+    }
+
+    .highlight {
+      font-weight: bold;
+      color: #0056b3;
+    }
+
+    .center {
+      text-align: center;
+      margin: 20px 0;
+    }
+
+    p.gray {
+      color: #666;
+      font-style: italic;
+      font-weight: bold;
+    }
+
+    hr {
+      border: 0;
+      border-top: 1px solid #ccc;
+    }
+  </style>
+</head>
+
+<body>
+  <h1 id="laser-analytics-summary">Laser Service Adoption Analytics Framework</h1>
+
+  <p class="gray">
+    “Built a robust SQL and Python-based framework to evaluate laser service adoption, segment guest behavior, and quantify trailing purchase patterns and lifetime value across service categories.”
+  </p>
+
+  <h2>1. Objective</h2>
+  <p>
+    The goal was to understand behavior and value of guests adopting new laser services, track pre-adoption habits, and model trailing engagement across service, retail, and recurring package activity.
+  </p>
+
+  <h2>2. SQL Data Foundation</h2>
+  <ul>
+    <li>Used layered CTEs to identify laser package purchasers and unify related events: individual services, redemptions, purchases, and product sales</li>
+    <li>Applied filters to exclude test SKUs, refunds, and consults</li>
+    <li>Joined with profile, location, and event metadata for segmentation and enrichment</li>
+  </ul>
+
+  <h2>3. Python Behavioral Analysis</h2>
+  <ul>
+    <li>Calculated 365-day trailing spend and visit patterns by guest, segmented by body part and event type</li>
+    <li>Derived total trailing value and repeat behavior, including recurring Wax Pass engagement and retail add-ons</li>
+    <li>Aggregated into summary views by body part to inform product positioning and pricing insights</li>
+  </ul>
+
+  <h2>4. Event Composition Modeling</h2>
+  <p>
+    Built functions to model the composition of guest activity across flexible timeframes (e.g., 7, 30, 90, 365 days), capturing unique combinations of services engaged in the lead-up to laser purchases.
+  </p>
+
+  <h2>5. Strategic Use Cases</h2>
+  <ul>
+    <li>Informs targeting logic for future laser campaigns based on historical mix of service behavior</li>
+    <li>Provides inputs for estimating upsell potential from waxers, product buyers, and high-frequency redeemers</li>
+    <li>Establishes baselines for measuring adoption lift and incremental value of laser service rollout</li>
+  </ul>
+
+  <div class="center">
+    <hr />
+  </div>
+
+  <h2>Bottom Line</h2>
+  <p>
+    This analytics system provides a complete view of laser adoption patterns, combining precise SQL data modeling with Python-based segmentation and spend analysis to guide strategic service expansion and upsell strategy.
+  </p>
+</body>
+
+</html>
