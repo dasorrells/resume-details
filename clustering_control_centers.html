@@ -73,23 +73,16 @@
 
   <h2>1. Overview</h2>
   <p>
-    This end-to-end solution addresses the challenge of identifying suitable control centers for comparing against
-    "target" or "test" centers. Suitability in this context is determined by capturing operational similarities across
-    multiple dimensions.
+    This end-to-end solution helps identify suitable control centers for performance comparison by grouping them based
+    on shared traits like location, maturity, and operational history.
   </p>
 
   <h2>2. Data Preparation & Feature Engineering</h2>
   <p>
-    The process begins with extracting data via SQL queries and consolidating it into a pandas DataFrame. Key metrics,
-    such as net sales by category and guest counts, are aggregated over several time windows (e.g., 3M, 6M, and 12M) for
-    both the current year (TY) and the prior year (LY). A custom function calculates percentage variances between TY and
-    LY figures, providing standardized measures of each center’s year-over-year performance across various metrics.
-  </p>
-  <p>
-    Additional attributes, such as finance opening dates, geolocation (latitude/longitude), and demographic and
-    operational features, are joined to the dataset. Centers are classified into New, Ramping, or Mature categories based
-    on the number of days since opening. This maturity grouping facilitates better handling of natural variability among
-    centers at different lifecycle stages in the subsequent scaling and clustering steps.
+    Data is pulled using SQL and merged into a unified dataset. Key metrics like guest counts and net sales are
+    aggregated over time windows (3M, 6M, 12M) for both the current and prior year. Year-over-year trends are
+    calculated, and additional attributes such as location, open date, and maturity classification (New, Ramping,
+    Mature) are added to ensure contextual alignment across centers.
   </p>
 
   <h2>3. Feature Scaling, Normalization, and Clustering Process</h2>
@@ -97,58 +90,38 @@
   <ul>
     <li>
       <span class="highlight">"Heavy" numeric features:</span> Transformed using a <code>MinMaxScaler</code> mapped to
-      the range [0, 1] and scaled further by a factor of 2.
+      [0, 1], then scaled by a factor of 2.
     </li>
     <li>
-      <span class="highlight">YOY percentage variance features:</span> Scaled using a <code>MinMaxScaler</code> mapped
-      to the range [−1, 1].
+      <span class="highlight">YOY percentage variance features:</span> Scaled with a <code>MinMaxScaler</code> mapped to
+      [−1, 1].
     </li>
   </ul>
   <p>
-    This approach balances the influence of absolute performance metrics with relative performance changes in terms of
-    YOY trendlines. Using the elbow method within each maturity class, the code determines the optimal number of
-    clusters. Centers are then assigned cluster labels.
+    This balances absolute performance with relative trends. The elbow method is used to determine optimal cluster
+    counts per maturity group, and centers are labeled accordingly.
   </p>
 
   <h2>4. Control Center Assignment</h2>
-  <p>For selecting control centers for a given target center, the pipeline performs the following steps:</p>
+  <p>Each target center is assigned matched controls through a layered selection process:</p>
   <ul>
-    <li>
-      <span class="highlight">Geographic Filtering:</span> Identifies geographically nearest centers within the same
-      maturity class (e.g., the 5 closest "Mature" centers).
-    </li>
-    <li>
-      <span class="highlight">Cluster-Based Selection:</span> Selects additional centers from the same maturity class and
-      cluster group (e.g., 20 centers with the same K-Means cluster label).
-    </li>
-    <li>
-      <span class="highlight">Exclusion Criteria:</span> Removes centers with significant price changes or unique
-      promotional events.
-    </li>
+    <li>Finds geographically closest centers within the same maturity class</li>
+    <li>Pulls additional centers from the same cluster group</li>
+    <li>Excludes centers with pricing or promotional irregularities</li>
   </ul>
 
   <h2>5. Faster Statistical Significance Through Clustering</h2>
   <p>
-    One of the key advantages of clustering is its ability to reduce measurement noise, thereby accelerating the time it
-    takes to achieve statistically significant results. By grouping centers with similar operational and demographic
-    characteristics:
+    One of the biggest advantages of clustering is reducing measurement noise, which speeds up statistical validation.
   </p>
   <ul>
-    <li>
-      <span class="highlight">Variance is reduced</span> between control and test groups, resulting in tighter baselines.
-    </li>
-    <li>
-      <span class="highlight">Treatment effect signals are clearer,</span> because less noise obscures the difference
-      between groups.
-    </li>
-    <li>
-      <span class="highlight">Fewer weeks of data</span> may be needed to detect a meaningful difference, enabling faster
-      decision-making and iteration.
-    </li>
+    <li>Variance between test and control groups is minimized</li>
+    <li>Treatment effects are easier to detect due to tighter baselines</li>
+    <li>Fewer weeks of data are needed to reach meaningful conclusions</li>
   </ul>
   <p>
-    These efficiencies are especially valuable in dynamic environments where speed to insight is critical for iterating
-    on strategy or rolling out changes.
+    This enables faster decision-making and leaner experimentation, especially in fast-paced environments where time to
+    insight matters.
   </p>
 
   <div class="center">
@@ -157,11 +130,10 @@
 
   <h2>Bottom Line</h2>
   <p>
-    This solution streamlines the process of identifying and clustering operationally similar control centers for robust
-    performance comparisons. By leveraging advanced data preparation, dual-scaling, and clustering techniques, it ensures
-    accurate benchmarking across centers while accounting for lifecycle stages, geographic proximity, and year-over-year
-    trends. <span class="highlight">Clustering improves both the comparability of control groups and the speed at which
-      insights become statistically valid.</span>
+    This approach streamlines the process of identifying operationally similar control centers using clustering and
+    standardization techniques. It improves benchmarking quality while accounting for lifecycle stages, geography, and
+    performance trends. Clustering not only boosts comparability—it also shortens the path to statistically significant
+    results.
   </p>
 </body>
 
