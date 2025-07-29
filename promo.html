@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Promotional Analytics Measurement Framework</title>
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-2XDS0NXE42"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
+    gtag("config", "G-2XDS0NXE42");
+  </script>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      margin: 20px;
+      color: #333;
+    }
+
+    h1, h2, h3 {
+      color: #444;
+    }
+
+    ul {
+      margin: 10px 0;
+      padding-left: 20px;
+    }
+
+    ul li {
+      margin-bottom: 10px;
+    }
+
+    .highlight {
+      font-weight: bold;
+      color: #0056b3;
+    }
+
+    .center {
+      text-align: center;
+      margin: 20px 0;
+    }
+
+    p.gray {
+      color: #666;
+      font-style: italic;
+      font-weight: bold;
+    }
+
+    hr {
+      border: 0;
+      border-top: 1px solid #ccc;
+    }
+  </style>
+</head>
+
+<body>
+  <h1 id="promo-framework-summary">Promotional Analytics Measurement Framework</h1>
+
+  <p class="gray">
+    “Designed a repeatable measurement framework to evaluate promotional service offers, blending SQL and Python for holistic performance tracking across adoption, retention, and financial impact.”
+  </p>
+
+  <h2>1. Objective</h2>
+  <p>
+    Built a modular analytics solution to evaluate promotional campaign effectiveness—measuring incremental usage, post-offer retention, and revenue impact while distinguishing between new and returning guests.
+  </p>
+
+  <h2>2. Guest Cohort Classification</h2>
+  <ul>
+    <li>Defined qualifying users based on first-time redemption per service category</li>
+    <li>Segmented guest types into <em>Net New</em>, <em>Qualified Re-activations</em>, and <em>Too Early to Qualify</em></li>
+    <li>Enabled filtering by service history lookback and dynamic qualification logic</li>
+  </ul>
+
+  <h2>3. Event Mapping and Conversion Tracking</h2>
+  <p>
+    The framework captures all monetizable interactions across a fixed follow-up window (e.g., 90 days), using flexible logic to include:
+  </p>
+  <ul>
+    <li>Service sales and discounted usage</li>
+    <li>Package redemptions and purchases</li>
+    <li>Cross-service guest movement post-offer</li>
+  </ul>
+
+  <h2>4. SQL & Python Synergy</h2>
+  <p>
+    SQL was used to define event logic, baseline classifications, and create layered CTEs. Python analytics followed to:
+  </p>
+  <ul>
+    <li>Summarize performance by guest cohort</li>
+    <li>Visualize adoption funnels and behavioral lift</li>
+    <li>Incorporate discount offsets and post-period cumulative value</li>
+  </ul>
+
+  <h2>5. Use Cases and Reusability</h2>
+  <ul>
+    <li>Framework supports iterative promotional A/B testing and ROI measurement</li>
+    <li>Easily adapted to new offers, body part targets, or test regions</li>
+    <li>Used to inform future promotional guardrails, targeting strategies, and offer design</li>
+  </ul>
+
+  <div class="center">
+    <hr />
+  </div>
+
+  <h2>Bottom Line</h2>
+  <p>
+    This framework provides a best-in-class approach to promotional analytics by integrating data engineering, SQL modeling, and Python-based behavioral analysis—empowering scalable measurement and strategic decision-making across a variety of offer types.
+  </p>
+</body>
+
+</html>
