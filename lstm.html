@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Marketing Attribution Modeling Framework</title>
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-2XDS0NXE42"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
+    gtag("config", "G-2XDS0NXE42");
+  </script>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      margin: 20px;
+      color: #333;
+    }
+
+    h1, h2, h3 {
+      color: #444;
+    }
+
+    ul {
+      margin: 10px 0;
+      padding-left: 20px;
+    }
+
+    ul li {
+      margin-bottom: 10px;
+    }
+
+    .highlight {
+      font-weight: bold;
+      color: #0056b3;
+    }
+
+    .center {
+      text-align: center;
+      margin: 20px 0;
+    }
+
+    p.gray {
+      color: #666;
+      font-style: italic;
+      font-weight: bold;
+    }
+
+    hr {
+      border: 0;
+      border-top: 1px solid #ccc;
+    }
+  </style>
+</head>
+
+<body>
+  <h1 id="attribution-model-summary">Marketing Attribution Modeling Framework</h1>
+
+  <p class="gray">
+    “Engineered a multi-model marketing attribution framework using LSTM and XGBoost to forecast guest acquisition and quantify channel impact, with SHAP-based explainability and temporal feature engineering.”
+  </p>
+
+  <h2>1. Goal</h2>
+  <p>
+    To build a replicable modeling pipeline that connects multi-channel media spend to downstream acquisition, leveraging temporal modeling and interpretability techniques to inform future marketing strategy.
+  </p>
+
+  <h2>2. Architecture & Inputs</h2>
+  <ul>
+    <li>Aggregated 12+ marketing channels into a daily panel structure</li>
+    <li>Engineered lagged features (e.g., trailing 3-day spend), 7-day trends, day-of-week one-hot encodings, and holiday indicators</li>
+    <li>Used guest count (USER_ID) as the primary forecasting target</li>
+  </ul>
+
+  <h2>3. Forecasting Models</h2>
+  <ul>
+    <li><span class="highlight">LSTM Neural Network:</span> Multi-step time series forecasting with 2-day input and 2-day horizon, trained in TensorFlow with dropout and early stopping</li>
+    <li><span class="highlight">XGBoost Regression:</span> Used for benchmarking and interpretability; evaluated via MAE, RMSE, R², and MAPE across train/test sets</li>
+  </ul>
+
+  <h2>4. Model Explainability</h2>
+  <p>
+    SHAP (SHapley Additive exPlanations) was applied to the trained XGBoost model to extract global and local feature importance:
+  </p>
+  <ul>
+    <li>Global: SHAP summary plots visualized which features consistently influenced guest acquisition</li>
+    <li>Local: Force plots helped diagnose how specific campaigns or conditions influenced single-day performance</li>
+    <li>Naive 95% confidence intervals were generated to contextualize forecast reliability</li>
+  </ul>
+
+  <h2>5. Strategic Use Cases</h2>
+  <p>
+    The framework is reusable for regional or campaign-level segmentation, with tunable lookback/horizon windows. It supports proactive media mix optimization and hypothesis testing for high-performing acquisition channels.
+  </p>
+
+  <div class="center">
+    <hr />
+  </div>
+
+  <h2>Bottom Line</h2>
+  <p>
+    This hybrid attribution framework provides both predictive accuracy and interpretability. It bridges marketing execution with analytics by quantifying impact, improving budget allocation, and surfacing key drivers behind acquisition performance.
+  </p>
+</body>
+
+</html>
