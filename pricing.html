@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Pricing Experiment Statistical Framework</title>
+  <title>Pricing Analytics Measurement Framework</title>
 
   <!-- Google Analytics Tag -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-2XDS0NXE42"></script>
@@ -64,40 +64,33 @@
 </head>
 
 <body>
-  <h1 id="pricing-framework-summary">Pricing Experiment Statistical Framework</h1>
+  <h1 id="pricing-framework-summary">Pricing Analytics Measurement Framework</h1>
 
   <p class="gray">
-    “Built a statistical measurement framework for pricing impact using clustering-derived control groups and Difference-in-Differences to quantify price elasticity and isolate causal effects across 240 centers.”
+    “Built a reusable statistical framework leveraging clustering, Difference-in-Differences, and Python-based power analysis to measure pricing elasticity and guide future price optimization tests.”
   </p>
 
-  <h2>1. Context</h2>
+  <h2>1. Purpose</h2>
   <p>
-    A network-wide pricing test was conducted across 240 mature centers to evaluate how changes in service and package pricing impacted guest behavior and business performance.
+    The framework was developed to evaluate the impact of price changes across a large center network while enabling iterative testing. It was designed to quantify short- and long-term effects on behavior, revenue, and guest retention.
   </p>
 
-  <h2>2. Clustering & Control Group Design</h2>
-  <p>
-    Centers were grouped using k-means clustering to ensure control groups closely matched test groups across prior trends, location, and maturity. This approach reduced variance and improved statistical precision.
-  </p>
-
-  <h2>3. Metrics and Statistical Methods</h2>
-  <p>
-    Key metrics included guest counts, package sales, rebooking rates, and service revenue. Difference-in-Differences was used to isolate causal effects, supported by:
-  </p>
+  <h2>2. Technical Foundation</h2>
   <ul>
-    <li>p-values to determine statistical significance</li>
-    <li>Cohen’s d to measure practical effect sizes</li>
-    <li>95% confidence intervals to describe the likely impact range</li>
+    <li>Used <code>statsmodels</code> for statistical power analysis and sample size estimation to determine testing feasibility.</li>
+    <li>Applied k-means clustering to assign matched control groups, reducing variance and increasing statistical precision.</li>
+    <li>Implemented Difference-in-Differences methodology to isolate the causal effect of price changes.</li>
+    <li>Calculated 95% confidence intervals and Cohen’s d to communicate statistical and practical significance.</li>
   </ul>
 
-  <h2>4. Key Findings</h2>
-  <ul>
-    <li>Guest and service volumes declined with statistical significance</li>
-    <li>Wax Pass sales were relatively price inelastic (not statistically significant)</li>
-    <li>Potential offset from reduced labor and wax supply costs</li>
-  </ul>
+  <h2>3. Modular & Reusable Design</h2>
   <p>
-    Deeper regional and service-level analyses were recommended based on observed heterogeneity in performance.
+    The entire pipeline was built using <code>pandas</code>, <code>numpy</code>, and <code>statsmodels</code>, allowing for easy configuration and replication across test waves or new regions. Analysts can plug in future metrics or timeframes without reengineering core logic.
+  </p>
+
+  <h2>4. Strategic Application</h2>
+  <p>
+    Beyond measuring outcomes of a single test, the framework supports ongoing pricing innovation. It informs which pricing thresholds drive behavior change, guides test design for future iterations, and ensures results are actionable and statistically valid.
   </p>
 
   <div class="center">
@@ -106,7 +99,7 @@
 
   <h2>Bottom Line</h2>
   <p>
-    This framework brought rigor and clarity to pricing impact measurement through clustering, controlled experimentation, and robust statistical testing—empowering leadership to assess elasticity, optimize pricing, and reduce risk of bias in financial interpretation.
+    This framework delivers a rigorous, repeatable approach to evaluating price sensitivity, built entirely in Python. By combining clustering, power analysis, and causal inference, it enables confident decision-making and a scalable roadmap for continuous pricing optimization.
   </p>
 </body>
 
