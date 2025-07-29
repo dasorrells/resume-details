@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pricing Experiment Statistical Framework</title>
+
+  <!-- Google Analytics Tag -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-2XDS0NXE42"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
+    gtag("config", "G-2XDS0NXE42");
+  </script>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      margin: 20px;
+      color: #333;
+    }
+
+    h1,
+    h2,
+    h3 {
+      color: #444;
+    }
+
+    ul {
+      margin: 10px 0;
+      padding-left: 20px;
+    }
+
+    ul li {
+      margin-bottom: 10px;
+    }
+
+    .highlight {
+      font-weight: bold;
+      color: #0056b3;
+    }
+
+    .center {
+      text-align: center;
+      margin: 20px 0;
+    }
+
+    p.gray {
+      color: #666;
+      font-style: italic;
+      font-weight: bold;
+    }
+
+    hr {
+      border: 0;
+      border-top: 1px solid #ccc;
+    }
+  </style>
+</head>
+
+<body>
+  <h1 id="pricing-framework-summary">Pricing Experiment Statistical Framework</h1>
+
+  <p class="gray">
+    “Built a statistical measurement framework for pricing impact using clustering-derived control groups and Difference-in-Differences to quantify price elasticity and isolate causal effects across 240 centers.”
+  </p>
+
+  <h2>1. Context</h2>
+  <p>
+    A network-wide pricing test was conducted across 240 mature centers to evaluate how changes in service and package pricing impacted guest behavior and business performance.
+  </p>
+
+  <h2>2. Clustering & Control Group Design</h2>
+  <p>
+    Centers were grouped using k-means clustering to ensure control groups closely matched test groups across prior trends, location, and maturity. This approach reduced variance and improved statistical precision.
+  </p>
+
+  <h2>3. Metrics and Statistical Methods</h2>
+  <p>
+    Key metrics included guest counts, package sales, rebooking rates, and service revenue. Difference-in-Differences was used to isolate causal effects, supported by:
+  </p>
+  <ul>
+    <li>p-values to determine statistical significance</li>
+    <li>Cohen’s d to measure practical effect sizes</li>
+    <li>95% confidence intervals to describe the likely impact range</li>
+  </ul>
+
+  <h2>4. Key Findings</h2>
+  <ul>
+    <li>Guest and service volumes declined with statistical significance</li>
+    <li>Wax Pass sales were relatively price inelastic (not statistically significant)</li>
+    <li>Potential offset from reduced labor and wax supply costs</li>
+  </ul>
+  <p>
+    Deeper regional and service-level analyses were recommended based on observed heterogeneity in performance.
+  </p>
+
+  <div class="center">
+    <hr />
+  </div>
+
+  <h2>Bottom Line</h2>
+  <p>
+    This framework brought rigor and clarity to pricing impact measurement through clustering, controlled experimentation, and robust statistical testing—empowering leadership to assess elasticity, optimize pricing, and reduce risk of bias in financial interpretation.
+  </p>
+</body>
+
+</html>
