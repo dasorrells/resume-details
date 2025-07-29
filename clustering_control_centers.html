@@ -2,100 +2,167 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Control Center Assignment Process</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Control Center Assignment Process</title>
 
-    <!-- Google Analytics Tag -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-2XDS0NXE42"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+  <!-- Google Analytics Tag -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-2XDS0NXE42"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
+    gtag("config", "G-2XDS0NXE42");
+  </script>
 
-      gtag('config', 'G-2XDS0NXE42');
-    </script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      margin: 20px;
+      color: #333;
+    }
 
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            margin: 20px;
-            color: #333;
-        }
+    h1,
+    h2,
+    h3 {
+      color: #444;
+    }
 
-        h1, h2, h3 {
-            color: #444;
-        }
+    ul {
+      margin: 10px 0;
+      padding-left: 20px;
+    }
 
-        ul {
-            margin: 10px 0;
-            padding-left: 20px;
-        }
+    ul li {
+      margin-bottom: 10px;
+    }
 
-        ul li {
-            margin-bottom: 10px;
-        }
+    .highlight {
+      font-weight: bold;
+      color: #0056b3;
+    }
 
-        .highlight {
-            font-weight: bold;
-            color: #0056b3;
-        }
+    .center {
+      text-align: center;
+      margin: 20px 0;
+    }
 
-        .center {
-            text-align: center;
-            margin: 20px 0;
-        }
+    p.gray {
+      color: #666;
+      font-style: italic;
+      font-weight: bold;
+    }
 
-        p.gray {
-            color: #666;
-            font-style: italic;
-            font-weight: bold;
-        }
-
-        hr {
-            border: 0;
-            border-top: 1px solid #ccc;
-        }
-    </style>
+    hr {
+      border: 0;
+      border-top: 1px solid #ccc;
+    }
+  </style>
 </head>
 
 <body>
+  <h1 id="control-summary">Control Center Assignment Process</h1>
 
-    <h1 id="control-summary">Control Center Assignment Process</h1>
+  <p class="gray">
+    “Developed an algorithm to systematically assign control centers to a control group using k-means clustering,
+    geographic proximity, and other center maturity classifications.”
+  </p>
 
-    <p class="gray">“Developed an algorithm to systematically assign control centers to a control group using k-means clustering, geographic proximity, and other center maturity classifications.”</p>
+  <h2>1. Overview</h2>
+  <p>
+    This end-to-end solution addresses the challenge of identifying suitable control centers for comparing against
+    "target" or "test" centers. Suitability in this context is determined by capturing operational similarities across
+    multiple dimensions.
+  </p>
 
-    <h2>1. Overview</h2>
-    <p>This end-to-end solution addresses the challenge of identifying suitable control centers for comparing against "target" or "test" centers. Suitability in this context is determined by capturing operational similarities across multiple dimensions.</p>
+  <h2>2. Data Preparation & Feature Engineering</h2>
+  <p>
+    The process begins with extracting data via SQL queries and consolidating it into a pandas DataFrame. Key metrics,
+    such as net sales by category and guest counts, are aggregated over several time windows (e.g., 3M, 6M, and 12M) for
+    both the current year (TY) and the prior year (LY). A custom function calculates percentage variances between TY and
+    LY figures, providing standardized measures of each center’s year-over-year performance across various metrics.
+  </p>
+  <p>
+    Additional attributes, such as finance opening dates, geolocation (latitude/longitude), and demographic and
+    operational features, are joined to the dataset. Centers are classified into New, Ramping, or Mature categories based
+    on the number of days since opening. This maturity grouping facilitates better handling of natural variability among
+    centers at different lifecycle stages in the subsequent scaling and clustering steps.
+  </p>
 
-    <h2>2. Data Preparation & Feature Engineering</h2>
-    <p>The process begins with extracting data via SQL queries and consolidating it into a pandas DataFrame. Key metrics, such as net sales by category and guest counts, are aggregated over several time windows (e.g., 3M, 6M, and 12M) for both the current year (TY) and the prior year (LY). A custom function calculates percentage variances between TY and LY figures, providing standardized measures of each center’s year-over-year performance across various metrics.</p>
-    <p>Additional attributes, such as finance opening dates, geolocation (latitude/longitude), and demographic and operational features, are joined to the dataset. Centers are classified into New, Ramping, or Mature categories based on the number of days since opening. This maturity grouping facilitates better handling of natural variability among centers at different lifecycle stages in the subsequent scaling and clustering steps.</p>
+  <h2>3. Feature Scaling, Normalization, and Clustering Process</h2>
+  <p>To prepare for clustering, the code applies a dual-scaling approach to normalize key features:</p>
+  <ul>
+    <li>
+      <span class="highlight">"Heavy" numeric features:</span> Transformed using a <code>MinMaxScaler</code> mapped to
+      the range [0, 1] and scaled further by a factor of 2.
+    </li>
+    <li>
+      <span class="highlight">YOY percentage variance features:</span> Scaled using a <code>MinMaxScaler</code> mapped
+      to the range [−1, 1].
+    </li>
+  </ul>
+  <p>
+    This approach balances the influence of absolute performance metrics with relative performance changes in terms of
+    YOY trendlines. Using the elbow method within each maturity class, the code determines the optimal number of
+    clusters. Centers are then assigned cluster labels.
+  </p>
 
-    <h2>3. Feature Scaling, Normalization, and Clustering Process</h2>
-    <p>To prepare for clustering, the code applies a dual-scaling approach to normalize key features:</p>
-    <ul>
-        <li><span class="highlight">"Heavy" numeric features:</span> Transformed using a <code>MinMaxScaler</code> mapped to the range [0, 1] and scaled further by a factor of 2.</li>
-        <li><span class="highlight">YOY percentage variance features:</span> Scaled using a <code>MinMaxScaler</code> mapped to the range [−1, 1].</li>
-    </ul>
-    <p>This approach balances the influence of absolute performance metrics with relative performance changes in terms of YOY trendlines. Using the elbow method within each maturity class, the code determines the optimal number of clusters. Centers are then assigned cluster labels.</p>
+  <h2>4. Control Center Assignment</h2>
+  <p>For selecting control centers for a given target center, the pipeline performs the following steps:</p>
+  <ul>
+    <li>
+      <span class="highlight">Geographic Filtering:</span> Identifies geographically nearest centers within the same
+      maturity class (e.g., the 5 closest "Mature" centers).
+    </li>
+    <li>
+      <span class="highlight">Cluster-Based Selection:</span> Selects additional centers from the same maturity class and
+      cluster group (e.g., 20 centers with the same K-Means cluster label).
+    </li>
+    <li>
+      <span class="highlight">Exclusion Criteria:</span> Removes centers with significant price changes or unique
+      promotional events.
+    </li>
+  </ul>
 
-    <h2>4. Control Center Assignment</h2>
-    <p>For selecting control centers for a given target center, the pipeline performs the following steps:</p>
-    <ul>
-        <li><span class="highlight">Geographic Filtering:</span> Identifies geographically nearest centers within the same maturity class (e.g., the 5 closest "Mature" centers).</li>
-        <li><span class="highlight">Cluster-Based Selection:</span> Selects additional centers from the same maturity class and cluster group (e.g., 20 centers with the same K-Means cluster label).</li>
-        <li><span class="highlight">Exclusion Criteria:</span> Removes centers with significant price changes or unique promotional events.</li>
-    </ul>
+  <h2>5. Faster Statistical Significance Through Clustering</h2>
+  <p>
+    One of the key advantages of clustering is its ability to reduce measurement noise, thereby accelerating the time it
+    takes to achieve statistically significant results. By grouping centers with similar operational and demographic
+    characteristics:
+  </p>
+  <ul>
+    <li>
+      <span class="highlight">Variance is reduced</span> between control and test groups, resulting in tighter baselines.
+    </li>
+    <li>
+      <span class="highlight">Treatment effect signals are clearer,</span> because less noise obscures the difference
+      between groups.
+    </li>
+    <li>
+      <span class="highlight">Fewer weeks of data</span> may be needed to detect a meaningful difference, enabling faster
+      decision-making and iteration.
+    </li>
+  </ul>
+  <p>
+    These efficiencies are especially valuable in dynamic environments where speed to insight is critical for iterating
+    on strategy or rolling out changes.
+  </p>
 
-    <div class="center">
-        <hr>
-    </div>
+  <div class="center">
+    <hr />
+  </div>
 
-    <h2>Bottom Line</h2>
-    <p>This solution streamlines the process of identifying and clustering operationally similar control centers for robust performance comparisons. By leveraging advanced data preparation, dual-scaling, and clustering techniques, it ensures accurate benchmarking across centers while accounting for lifecycle stages, geographic proximity, and year-over-year trends.</p>
-
+  <h2>Bottom Line</h2>
+  <p>
+    This solution streamlines the process of identifying and clustering operationally similar control centers for robust
+    performance comparisons. By leveraging advanced data preparation, dual-scaling, and clustering techniques, it ensures
+    accurate benchmarking across centers while accounting for lifecycle stages, geographic proximity, and year-over-year
+    trends. <span class="highlight">Clustering improves both the comparability of control groups and the speed at which
+      insights become statistically valid.</span>
+  </p>
 </body>
 
 </html>
