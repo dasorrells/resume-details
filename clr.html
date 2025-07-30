@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Customer Lifetime Value & Segmentation Framework</title>
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-2XDS0NXE42"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
+    gtag("config", "G-2XDS0NXE42");
+  </script>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      margin: 20px;
+      color: #333;
+    }
+
+    h1, h2, h3 {
+      color: #444;
+    }
+
+    ul {
+      margin: 10px 0;
+      padding-left: 20px;
+    }
+
+    ul li {
+      margin-bottom: 10px;
+    }
+
+    .highlight {
+      font-weight: bold;
+      color: #0056b3;
+    }
+
+    .center {
+      text-align: center;
+      margin: 20px 0;
+    }
+
+    p.gray {
+      color: #666;
+      font-style: italic;
+      font-weight: bold;
+    }
+
+    hr {
+      border: 0;
+      border-top: 1px solid #ccc;
+    }
+  </style>
+</head>
+
+<body>
+  <h1 id="clv-summary">Guest-Level Customer Lifetime Value & Segmentation Framework</h1>
+
+  <p class="gray">
+    “Designed a guest-level SQL and Python framework to model lifetime revenue, visit cadence, and segmentation, integrating behavioral buckets with acquisition cohorts to power strategic CLV forecasting and retention insights.”
+  </p>
+
+  <h2>1. Objective</h2>
+  <p>
+    To develop a unified analytics pipeline that captures and segments customer behavior across years of visit history, creating a value ladder view that informs strategic retention, loyalty, and growth planning.
+  </p>
+
+  <h2>2. Data Engineering (SQL)</h2>
+  <ul>
+    <li>Used CTEs to define guest acquisition dates, transaction cadence, redemption patterns, and long-term engagement over 1, 2, 3, 5, and 10-year windows</li>
+    <li>Rolled transaction activity into structured visit-level summaries by guest, body part, and time period</li>
+    <li>Segmented by first-visit revenue, visit recurrence, time between visits, and Wax Pass activity</li>
+  </ul>
+
+  <h2>3. Feature Generation (Python)</h2>
+  <ul>
+    <li>Binned guests into behavioral groups based on visit count, gap between visits, service variety, retail add-ons, and loyalty depth</li>
+    <li>Created categorical flags for fast returners (e.g. 60/90/180-day second visits), Wax Pass usage, and spend mix by service type</li>
+    <li>Defined CLV quartiles and applied dimension-by-metric profiling across acquisition cohorts and value buckets</li>
+  </ul>
+
+  <h2>4. Visualization & Output</h2>
+  <ul>
+    <li>Generated waterfall charts to illustrate guest journey from first visit to long-term retention</li>
+    <li>Exported segmented CLV summaries by cohort and behavioral tag to guide pricing, marketing, and operational strategy</li>
+    <li>Enabled repeatable benchmarking of revenue per guest by behavior, acquisition class, and structural traits</li>
+  </ul>
+
+  <div class="center">
+    <hr />
+  </div>
+
+  <h2>Bottom Line</h2>
+  <p>
+    This guest-level CLV framework combines detailed SQL lifecycle modeling with Python-based feature engineering to enable rich behavioral segmentation and accurate revenue forecasting. It serves as a strategic asset for defining value tiers, retention risk, and growth potential at scale.
+  </p>
+</body>
+
+</html>
