@@ -4,9 +4,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Statistical Test Framework</title>
+  <title>Test vs Control Experimentation Framework</title>
 
-  <!-- Google Analytics Tag -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-2XDS0NXE42"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -25,9 +24,7 @@
       color: #333;
     }
 
-    h1,
-    h2,
-    h3 {
+    h1, h2, h3 {
       color: #444;
     }
 
@@ -64,30 +61,44 @@
 </head>
 
 <body>
-  <h1 id="stat-framework-summary">Statistical Test Framework</h1>
+  <h1 id="framework-summary">Statistical Test vs Control Experimentation Framework</h1>
 
   <p class="gray">
-    “Designed and implemented a statistical framework combining power analysis, clustering, and Difference-in-Differences to accelerate test readouts, reduce variance, and detect practical effects across hundreds of centers.”
+    “Built a scalable statistical framework combining power analysis, clustering, and Difference-in-Differences to analyze change, quantify effect size, and accelerate time to significance across all test vs control experiments.”
   </p>
 
-  <h2>1. Measurement Design</h2>
+  <h2>1. Purpose</h2>
   <p>
-    Power analysis is used prior to experimentation to estimate the minimum number of 28-day periods needed to detect a given lift in return rate with high statistical confidence. Assumptions include expected standard deviation, target lift size, and control/test group ratios.
+    This framework was developed to support consistent, defensible measurement across all types of controlled experiments—pricing, product, retention, or operational. It is designed to enable repeatable analysis of behavioral change, isolate treatment effects, and generate rapid statistical readouts.
   </p>
 
-  <h2>2. Clustering and Matching</h2>
+  <h2>2. Measurement Design & Power Analysis</h2>
+  <ul>
+    <li>Leverages <code>statsmodels</code> in Python to conduct pre-test power analysis</li>
+    <li>Estimates sample size and timeframes needed based on assumed variance, test/control size, and target lift</li>
+    <li>Allows teams to evaluate feasibility before launching an experiment</li>
+  </ul>
+
+  <h2>3. Clustering & Control Matching</h2>
   <p>
-    Centers are grouped using k-means clustering based on historical KPIs, geographic proximity, and maturity. This reduces within-group variance and improves match quality for test/control assignments.
+    To minimize bias and improve precision, k-means clustering is used to match centers based on maturity, historical KPIs, and geography. This reduces variance, strengthens comparisons, and ensures balanced control group design.
   </p>
 
-  <h2>3. Pre/Post Analysis with Difference-in-Differences</h2>
+  <h2>4. Difference-in-Differences Pre/Post Analysis</h2>
   <p>
-    Metrics are averaged across pre- and post-periods (e.g., 6 months before and after launch). Difference-in-Differences estimation isolates causal effects by comparing changes in test groups vs matched controls.
+    Pre- and post-period metrics are averaged at the center level, and Difference-in-Differences is used to isolate causal impact. This approach helps control for time trends, seasonality, and structural differences between groups.
   </p>
 
-  <h2>4. Statistical Significance and Effect Size</h2>
+  <h2>5. Statistical Significance & Effect Interpretation</h2>
+  <ul>
+    <li>Reports p-values and 95% confidence intervals to validate statistical significance</li>
+    <li>Calculates Cohen’s d to measure practical impact</li>
+    <li>Identifies which tests are meaningful enough to influence strategy</li>
+  </ul>
+
+  <h2>6. Modular, Reusable Design</h2>
   <p>
-    Statistical rigor is ensured using p-values, 95% confidence intervals, and effect size calculations (Cohen’s d) to validate both the presence and magnitude of change.
+    The framework is built with reusability in mind using <code>pandas</code>, <code>numpy</code>, and <code>statsmodels</code>. Analysts can plug in different test types, timeframes, and KPIs without reengineering the logic—supporting scalable experimentation across business domains.
   </p>
 
   <div class="center">
@@ -96,7 +107,7 @@
 
   <h2>Bottom Line</h2>
   <p>
-    This process creates a defensible measurement strategy grounded in power analysis, clean experimental design, and rapid statistical readouts—supporting fast iteration and confident decision-making at scale.
+    This experiment measurement system provides a robust and repeatable approach to evaluating change. By combining statistical rigor with automation and flexibility, it supports confident decision-making, rapid iteration, and data-driven innovation at scale.
   </p>
 </body>
 
